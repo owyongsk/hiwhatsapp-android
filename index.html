@@ -1,0 +1,23 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.0/angular.min.js"></script>
+  <script type="text/javascript">
+    app = angular.module('myModule', []);
+    app.config(['$compileProvider', function($compileProvider) {
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|intent):/);
+    }]);
+  </script>
+</head>
+<body ng-app='myModule'>
+  <br />
+  <br />
+  <br />
+  <br />
+  <input ng-model="number" style="font-size: 20px;" ng-init="number = $location.search()">
+  <br />
+  <a href="intent://send/{{number}}#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
+    <p style="font-size: 30px">WHATSAPP NOW</p>
+  </a>
+  <br />
+</body>
+<html>
